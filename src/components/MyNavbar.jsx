@@ -2,6 +2,7 @@ import { Component } from "react";
 import logo from "../img/logo.png";
 import { Col } from "react-bootstrap";
 import { FaSearch, FaBell, FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 class MyNavbar extends Component {
   render() {
@@ -31,16 +32,18 @@ class MyNavbar extends Component {
 
         <Col className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <a className="nav-link font-weight-bold" href="#Home">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item active">
-              <a className="nav-link font-weight-bold" href="#Tv">
-                TV Shows
-              </a>
-            </li>
+            <Link to="/">
+              <li className="nav-item">
+                <a className="nav-link font-weight-bold" href="#Home">
+                  Home <span className="sr-only">(current)</span>
+                </a>
+              </li>
+            </Link>
+            <Link to="/tv-shows">
+              <li className="nav-item active">
+                <span className="nav-link font-weight-bold">TV Shows</span>
+              </li>
+            </Link>
             <li className="nav-item">
               <a className="nav-link font-weight-bold" href="#Movies">
                 Movies
