@@ -3,7 +3,7 @@ import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const MovieDetails = (props) => {
-  const [movieArray, setMovieArray] = useState(null);
+  const [movieArray, setMovieArray] = useState({});
   const params = useParams();
 
   console.log("PARAMETRI", params);
@@ -29,7 +29,7 @@ const MovieDetails = (props) => {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={5} className="Col">
+        <Col xs={12} md={5}>
           <img src={movieArray.Poster} alt="" />
         </Col>
         <Col xs={12} md={7} className="text-white">
@@ -47,13 +47,19 @@ const MovieDetails = (props) => {
             >
               {movieArray.Title}
             </ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+            <ListGroup.Item
+              style={{ backgroundColor: "#221f1f", textAlign: "start" }}
+            >
               {movieArray.Plot}
             </ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+            <ListGroup.Item
+              style={{ backgroundColor: "#221f1f", textAlign: "start" }}
+            >
               {movieArray.Genre}
             </ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+            <ListGroup.Item
+              style={{ backgroundColor: "#221f1f", textAlign: "start" }}
+            >
               {movieArray.Year}
             </ListGroup.Item>
           </ListGroup>
