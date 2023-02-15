@@ -6,10 +6,10 @@ const MovieDetails = (props) => {
   const [movieArray, setMovieArray] = useState(null);
   const params = useParams();
 
-  console.log("Wallace", params);
+  console.log("PARAMETRI", params);
 
-  const idFetch = () => {
-    fetch(`https://www.omdbapi.com/?apikey=9173a3c&i=${params.movieId}`)
+  const idFetch = (id) => {
+    fetch(id)
       .then((element) => {
         if (element.ok) {
           return element.json();
@@ -22,7 +22,7 @@ const MovieDetails = (props) => {
   };
 
   useEffect(() => {
-    idFetch();
+    idFetch(`https://www.omdbapi.com/?apikey=9173a3c&i=${params.movieId}`);
     console.log("movieOutsideFetch", movieArray);
   }, []);
 
@@ -32,15 +32,30 @@ const MovieDetails = (props) => {
         <Col xs={12} md={5} className="Col">
           <img src={movieArray.Poster} alt="" />
         </Col>
-        <Col xs={12} md={7} className="Col">
+        <Col xs={12} md={7} className="text-white">
           <ListGroup>
             {/* 
             <ListGroup.Item>{movieArray.Actors}</ListGroup.Item>
-            <ListGroup.Item>{movieArray.Plot}</ListGroup.Item>
           */}
-            <ListGroup.Item>{movieArray.Title}</ListGroup.Item>
-            <ListGroup.Item>{movieArray.Year}</ListGroup.Item>
-            <ListGroup.Item>{movieArray.Genre}</ListGroup.Item>
+            <ListGroup.Item
+              style={{
+                backgroundColor: "#221f1f",
+                fontSize: "2rem",
+                fontWeight: "bold",
+                color: "red",
+              }}
+            >
+              {movieArray.Title}
+            </ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+              {movieArray.Plot}
+            </ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+              {movieArray.Genre}
+            </ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: "#221f1f" }}>
+              {movieArray.Year}
+            </ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>

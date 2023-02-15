@@ -112,7 +112,7 @@ footer {
 @media screen and (min-width: 1400px) {
   .col .posterImg {
     height: 145px;
-    width: 100%;
+    width: 250px;
   }
 }
 
