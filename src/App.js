@@ -6,7 +6,7 @@ import MainContent from "./components/MainContent";
 import MyFooter from "./components/MyFooter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TvShows from "./components/TvShows";
-import MovieDetails from "./components/MyDetails";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (

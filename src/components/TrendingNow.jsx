@@ -1,5 +1,11 @@
 import { Component, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  useNavigate,
+  useParams,
+  Link,
+} from "react-router-dom";
 import classComponentConverter from "../helpers/ClassComponentConverter";
 import Cards from "./Cards";
 
@@ -58,6 +64,7 @@ const TrendingNow = (props) => {
   //   cardsArr: [1, 2, 3, 4, 5, 6],
   // };
   const [cardsArr, setCardsArr] = useState([1, 2, 3, 4, 5, 6]);
+  const navigate = useNavigate();
 
   const trendingFetch = () => {
     fetch(`https://www.omdbapi.com/?apikey=9173a3c&s=${props.productQuery}`)
@@ -86,13 +93,17 @@ const TrendingNow = (props) => {
           // if (index < 6) {
           //   return <Cards key={"cardsKeyNumber" + index} />;
           // }
+
           return (
             index < 6 && (
-              <Cards
-                key={`CardsKey ${index}`}
-                posterImg={e.Poster}
-                title={e.Title}
-              />
+              <Link to={"/movie-details/" + e.imdbID}>
+                <Cards
+                  key={`CardsKey ${index}`}
+                  posterImg={e.Poster}
+                  title={e.Title}
+                  movieId={e.imdbID}
+                />
+              </Link>
             )
           );
         })}
@@ -101,4 +112,4 @@ const TrendingNow = (props) => {
   );
 };
 
-export default classComponentConverter(TrendingNow);
+export default TrendingNow;
